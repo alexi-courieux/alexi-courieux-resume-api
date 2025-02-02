@@ -39,6 +39,7 @@ my-fastapi-project
 
 3. Run the application:
    ```
+   ./.venv/Scripts/activate
    uvicorn app.main:app --reload
    ```
 
