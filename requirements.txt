@@ -5,3 +5,4 @@ pydantic
 sqlalchemy
 databases
 asyncpg
+pymysql
