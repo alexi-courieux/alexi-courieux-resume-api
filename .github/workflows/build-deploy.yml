@@ -20,3 +20,4 @@ jobs:
           local-dir: /
           server-dir: resume-api/
           state-name: api_content
+          dangerous-clean-slate: true
