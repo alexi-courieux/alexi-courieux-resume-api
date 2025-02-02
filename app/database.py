@@ -3,6 +3,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import quote_plus
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Define the database connection parameters from environment variables
 DB_USERNAME = os.getenv("DB_USERNAME")
