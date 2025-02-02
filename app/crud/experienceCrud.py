@@ -1,7 +1,7 @@
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-def get_experience(db: Session, company: str, language: str = "EN"):
+def get_experience(db: Session, company: str, language: str):
     sql = text("""
     SELECT e.COMPANY as company, ei18n.COMPANY_NAME as company_name, ei18n.POSITION as position, e.START_DATE as start_date, e.END_DATE as end_date, ei18n.SHORT_DESCRIPTION as short_description, ei18n.DESCRIPTION as description
     FROM EXPERIENCE e
