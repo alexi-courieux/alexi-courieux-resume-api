@@ -32,6 +32,6 @@ DB_PASSWORD_ENCODED = quote_plus(DB_PASSWORD)
 # Construct the DATABASE_URL
 DATABASE_URL = f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD_ENCODED}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
