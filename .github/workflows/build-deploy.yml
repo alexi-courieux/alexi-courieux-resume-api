@@ -1,11 +1,25 @@
 name: build-and-deploy
+
 on:
   workflow_dispatch:
+    inputs:
+      deploy_environment:
+        description: 'Deployment Environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - 'production'
+      clean_ftp:
+        description: 'Clean FTP'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ github.event.inputs.deploy_environment }}
 
     steps:
       - name: Checkout repository
@@ -20,3 +34,4 @@ jobs:
           local-dir: ./
           server-dir: resume-api/
           state-name: api_content
+          dangerous-clean-slate: ${{ github.event.inputs.clean_ftp }}
