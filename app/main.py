@@ -8,7 +8,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-app.include_router(experience_router, prefix="/api/v1/experience", tags=["experience"])
+app.include_router(experience_router, prefix="/v1/experience", tags=["experience"])
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 def root():
