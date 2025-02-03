@@ -11,17 +11,19 @@ my-fastapi-project
 │   ├── api
 │   │   └── v1
 │   │       └── endpoints
-│   │           └── example.py  # API endpoints for the example resource
+│   │           └── xEndpoint.py  # API endpoints for the x resource
 │   ├── core
 │   │   └── config.py        # Configuration settings
 │   ├── models
-│   │   └── example.py       # Data model for the example resource
+│   │   └── xModel.py       # Data model for the x resource
 │   ├── schemas
-│   │   └── example.py       # Pydantic schemas for validation
+│   │   └── xSchema.py       # Pydantic schemas for validation
 │   └── crud
-│       └── example.py       # CRUD operations for the example resource
-├── requirements.txt          # Project dependencies
-└── README.md                 # Project documentation
+│       └── xCrud.py       # CRUD operations for the x resource
+├── .env                     # Environment variables
+├── startup.py               # Application startup script, capable of handling WSGI and ASGI servers
+├── requirements.txt         # Project dependencies
+└── README.md                # Project documentation
 ```
 
 ## Setup Instructions
@@ -37,10 +39,20 @@ my-fastapi-project
    pip install -r requirements.txt
    ```
 
+3. Create an environment file .env and add the following variables :
+   ```
+   DB_USERNAME=your_db_username
+   DB_PASSWORD=your_db_password
+   DB_HOST=your_db_host
+   DB_PORT=your_db_port
+   DB_NAME=your_db_name
+   ```
+   
+
 3. Run the application:
    ```
    ./.venv/Scripts/activate
-   uvicorn app.main:app --reload
+   python startup.py
    ```
 
 ## Usage
