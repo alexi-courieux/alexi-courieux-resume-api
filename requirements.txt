@@ -6,3 +6,4 @@ sqlalchemy
 databases
 asyncpg
 pymysql
+a2wsgi

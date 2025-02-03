@@ -1,11 +1,13 @@
 from fastapi import FastAPI
-from fastapi.middleware.wsgi import WSGIMiddleware
+from a2wsgi import ASGIMiddleware
 from app.main import app as fastapi_app
+
+WSGI_APP = ASGIMiddleware(ASGI_APP)
 
 def create_wsgi_app():
     app = FastAPI()
-    app.mount("/", WSGIMiddleware(fastapi_app))
-    return app
+    wsgiApi = ASGIMiddleware(app)
+    return wsgiApi
 
 def start(env, start_response):
     app = create_wsgi_app()
