@@ -19,9 +19,6 @@ DB_NAME = os.getenv("DB_NAME")
 if not DB_USERNAME or not DB_PASSWORD or not DB_HOST or not DB_PORT or not DB_NAME:
     raise ValueError("Database connection parameters are not set")
 
-# URL-encode the password
-DB_PASSWORD_ENCODED = quote_plus(DB_PASSWORD)
-
 # Construct the DATABASE_URL
 DATABASE_URL = f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
