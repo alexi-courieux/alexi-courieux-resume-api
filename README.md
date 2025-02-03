@@ -46,10 +46,11 @@ my-fastapi-project
    DB_HOST=your_db_host
    DB_PORT=your_db_port
    DB_NAME=your_db_name
+   CORS_ORIGIN=http://localhost:* # URL of the consumer application
    ```
    
 
-3. Run the application:
+3. Run the application (ASGI):
    ```
    ./.venv/Scripts/activate
    python startup.py

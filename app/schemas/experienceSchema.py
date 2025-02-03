@@ -4,11 +4,11 @@ from datetime import date
 
 class ExperienceSchema(BaseModel):
     company: str
-    company_name: str
+    companyName: str
     position: str
-    start_date: date
-    end_date: Optional[date] = None
-    short_description: Optional[str] = None
+    startDate: date
+    endDate: Optional[date] = None
+    shortDescription: Optional[str] = None
     description: Optional[str] = None
     
 
