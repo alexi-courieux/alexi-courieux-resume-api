@@ -15,6 +15,13 @@ DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 
+# Print the database connection parameters
+print(f"DB_USERNAME: {DB_USERNAME}")
+print(f"DB_PASSWORD: {DB_PASSWORD}")
+print(f"DB_HOST: {DB_HOST}")
+print(f"DB_PORT: {DB_PORT}")
+print(f"DB_NAME: {DB_NAME}")
+
 # Check if the database connection parameters are set
 if not DB_USERNAME or not DB_PASSWORD or not DB_HOST or not DB_PORT or not DB_NAME:
     raise ValueError("Database connection parameters are not set")
