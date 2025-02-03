@@ -43,8 +43,8 @@ def root():
         <body>
             <div class="container">
                 <h1>Welcome to the API</h1>
-                <a href="/docs">Swagger UI</a>
-                <a href="/redoc">ReDoc</a>
+                <a href="/api/docs">Swagger UI</a>
+                <a href="/api/redoc">ReDoc</a>
             </div>
         </body>
     </html>
