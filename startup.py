@@ -2,11 +2,14 @@ from fastapi import FastAPI
 from a2wsgi import ASGIMiddleware
 from app.main import app as fastapi_app
 
+def start_asgi_app():
+    return fastapi_app
+
 def create_wsgi_app():
     wsgiApi = ASGIMiddleware(fastapi_app)
     return wsgiApi
 
-def start(env, start_response):
+def start_wsgi_app(env, start_response):
     app = create_wsgi_app()
     return app(env, start_response)
 
@@ -23,4 +26,4 @@ if __name__ == "__main__":
     # Run the application
     app = create_wsgi_app()
     import uvicorn
-    uvicorn.run("startup:create_wsgi_app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("startup:start_asgi_app", host="0.0.0.0", port=8000, reload=True)
