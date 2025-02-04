@@ -51,7 +51,7 @@ my-fastapi-project
    ```
    
 
-3. Run the application (ASGI):
+3. Run the application (WSGI):
    ```
    ./.venv/Scripts/activate
    python startup.py
