@@ -1,9 +1,7 @@
 FastAPI
 uvicorn[standard]
-gunicorn
 pydantic
 sqlalchemy
-databases
-asyncpg
 pymysql
 a2wsgi
+python-dotenv

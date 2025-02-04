@@ -4,21 +4,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from a2wsgi import ASGIMiddleware
 from app.main import app as fastapi_app
 
-def init_app():
-    app = fastapi_app
-    # Add CORS middleware
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=os.getenv("CORS_ALLOW_ORIGINS", "*"),
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-    return app
+# Add CORS middleware
+fastapi_app.add_middleware(
+    CORSMiddleware,
+    allow_origins=os.getenv("CORS_ALLOW_ORIGINS", "*"),
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def create_wsgi_app():
-    app = init_app()
-    wsgiApi = ASGIMiddleware(app)
+    wsgiApi = ASGIMiddleware(fastapi_app)
     return wsgiApi
 
 def start_wsgi_app(env, start_response):
@@ -32,9 +28,6 @@ if __name__ == "__main__":
     # Add the project directory to the sys.path
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-    # Initialize the app with middleware
-    app = init_app()
-
     # Run the application
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+    from waitress import serve
+    serve(start_wsgi_app, host="0.0.0.0", port=8000)

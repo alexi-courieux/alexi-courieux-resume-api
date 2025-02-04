@@ -37,6 +37,7 @@ my-fastapi-project
 2. Install the required dependencies:
    ```
    pip install -r requirements.txt
+   pip install -r requirements-local.txt
    ```
 
 3. Create an environment file .env and add the following variables :

@@ -16,5 +16,4 @@ async def read_experience(company: str, language: str = Query("EN"), db: Session
 @router.get("/", response_model=list[ExperienceSchema])
 async def list_experiences(language: str = Query("EN"), db: Session = Depends(get_db)):
     language = language.upper()
-    print(language)
     return get_experiences(db, language)
