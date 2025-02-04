@@ -16,10 +16,6 @@ def init_app():
     )
     return app
 
-def start_asgi_app():
-    app = init_app()
-    return app
-
 def create_wsgi_app():
     app = init_app()
     wsgiApi = ASGIMiddleware(app)
@@ -30,16 +26,15 @@ def start_wsgi_app(env, start_response):
     return app(env, start_response)
 
 if __name__ == "__main__":
-    import os
     import sys
-    from fastapi import FastAPI
     from fastapi.middleware.wsgi import WSGIMiddleware
-    from app.main import app as fastapi_app
 
     # Add the project directory to the sys.path
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
+    # Initialize the app with middleware
+    app = init_app()
+
     # Run the application
-    app = create_wsgi_app()
     import uvicorn
-    uvicorn.run("startup:start_asgi_app", host="127.0.0.1", port=8000, reload=True, factory=True)
+    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
