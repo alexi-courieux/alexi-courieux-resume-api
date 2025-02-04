@@ -40,5 +40,6 @@ if __name__ == "__main__":
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
     # Run the application
+    app = create_wsgi_app()
     import uvicorn
     uvicorn.run("startup:start_asgi_app", host="127.0.0.1", port=8000, reload=True, factory=True)
