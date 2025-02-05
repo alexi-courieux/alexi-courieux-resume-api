@@ -1,7 +1,13 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from pydantic import conset
 from app.api.v1.endpoints.experienceEndpoint import router as experience_router
+from app.api.v1.endpoints.skillEndpoint import router as skill_router
+from app.core.exceptionHandler import general_exception_handler, http_exception_handler
 from app.database import engine, Base
 from fastapi.responses import HTMLResponse
+from app.core.logging import log_filename
+
+print (f"log file : {log_filename}")
 
 # Create the database tables
 Base.metadata.create_all(bind=engine)
@@ -9,6 +15,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 app.include_router(experience_router, prefix="/v1/experience", tags=["experience"])
+app.include_router(skill_router, prefix="/v1/skill", tags=["skill"])
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 def root():
@@ -49,3 +56,6 @@ def root():
         </body>
     </html>
     """
+    
+app.add_exception_handler(HTTPException, http_exception_handler)
+app.add_exception_handler(Exception, general_exception_handler)
