@@ -20,7 +20,7 @@ class ExperienceI18nModel(Base):
     __tablename__ = 'EXPERIENCE_I18N'
 
     id = Column("ID", Integer, primary_key=True)
-    experienceId = Column("EXPERIENCE_ID" ,String, ForeignKey('EXPERIENCE.id'))
+    experienceId = Column("EXPERIENCE_ID" ,String, ForeignKey('EXPERIENCE.ID'))
     position = Column("POSITION", String)
     short_description = Column("SHORT_DESCRIPTION", String)
     description = Column("DESCRIPTION", String)
@@ -36,7 +36,7 @@ class ExperienceSkillModel(Base):
     __tablename__ = 'EXPERIENCE_SKILL'
 
     id = Column("ID", Integer, primary_key=True)
-    experienceId = Column("EXPERIENCE_ID", String, ForeignKey('EXPERIENCE.id'))
+    experienceId = Column("EXPERIENCE_ID", String, ForeignKey('EXPERIENCE.ID'))
     skillId = Column("SKILL_ID", String)
 
     def __repr__(self):
