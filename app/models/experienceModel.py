@@ -7,14 +7,14 @@ Base = declarative_base()
 class ExperienceModel(Base):
     __tablename__ = 'EXPERIENCE'
 
-    id = Column(String, primary_key=True)
-    start_date = Column(DateTime)
-    end_date = Column(DateTime)
+    id = Column("ID", String, primary_key=True)
+    startDate = Column("START_DATE", DateTime)
+    endDate = Column("END_DATE", DateTime)
 
     i18n = relationship("ExperienceI18nModel", back_populates="experience")
 
     def __repr__(self):
-        return f"<Experience(id='{self.id}', start_date='{self.start_date}', end_date='{self.end_date}')>"
+        return f"<Experience(id='{self.id}', startDate='{self.startDate}', endDate='{self.endDate}')>"
 
 class ExperienceI18nModel(Base):
     __tablename__ = 'EXPERIENCE_I18N'
@@ -35,9 +35,9 @@ class ExperienceI18nModel(Base):
 class ExperienceSkillModel(Base):
     __tablename__ = 'EXPERIENCE_SKILL'
 
-    id = Column(Integer, primary_key=True)
-    experienceId = Column(String, ForeignKey('EXPERIENCE.id'))
-    skillId = Column(String)
+    id = Column("ID", Integer, primary_key=True)
+    experienceId = Column("EXPERIENCE_ID", String, ForeignKey('EXPERIENCE.id'))
+    skillId = Column("SKILL_ID", String)
 
     def __repr__(self):
         return f"<ExperienceSkill(id='{self.id}', experienceId='{self.experienceId}', skillId='{self.skillId}')>"

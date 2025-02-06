@@ -9,8 +9,8 @@ def get_experience_skills(db: Session, experienceCompany: str, language: str) ->
         join(SkillI18nModel, SkillModel.id == SkillI18nModel.skillId).\
         join(SkillSkillCategoryModel, SkillModel.id == SkillSkillCategoryModel.skillId).\
         join(SkillCategoryI18nModel, SkillSkillCategoryModel.skillCategoryId == SkillCategoryI18nModel.skillCategoryId).\
-        join(ExperienceSkillModel, SkillModel.id == ExperienceSkillModel.skill_id).\
-        filter(SkillI18nModel.language == language, SkillCategoryI18nModel.language == language, ExperienceSkillModel.experience_id == experienceCompany).\
+        join(ExperienceSkillModel, SkillModel.id == ExperienceSkillModel.skillId).\
+        filter(SkillI18nModel.language == language, SkillCategoryI18nModel.language == language, ExperienceSkillModel.experienceId == experienceCompany).\
         all()
     
     

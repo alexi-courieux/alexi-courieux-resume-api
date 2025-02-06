@@ -16,8 +16,8 @@ def get_experience(db: Session, company: str, language: str) -> ExperienceSchema
                 id=result.id,
                 companyName=i18n.companyName,
                 position=i18n.position,
-                startDate=result.start_date,
-                endDate=result.end_date,
+                startDate=result.startDate,
+                endDate=result.endDate,
                 shortDescription=i18n.short_description,
                 description=i18n.description
             )
@@ -37,8 +37,8 @@ def get_experiences(db: Session, language: str) -> list[ExperienceSchema]:
                 id=result.id,
                 companyName=i18n.companyName,
                 position=i18n.position,
-                startDate=result.start_date,
-                endDate=result.end_date,
+                startDate=result.startDate,
+                endDate=result.endDate,
                 shortDescription=i18n.short_description,
                 description=i18n.description
             ))
