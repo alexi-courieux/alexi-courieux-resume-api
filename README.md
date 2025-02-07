@@ -13,11 +13,13 @@ my-fastapi-project
 │   │       └── endpoints
 │   │           └── xEndpoint.py  # API endpoints for the x resource
 │   ├── core
-│   │   └── config.py        # Configuration settings
+│   │   ├── config.py                  # Configuration settings
+│   │   ├── exceptionHandler.py        # Custom exception handler
+│   │   └── logging.py                 # Logging configuration
 │   ├── models
-│   │   └── xModel.py       # Data model for the x resource
+│   │   └── xModel.py       # Data model for the x resource, used in database operations
 │   ├── schemas
-│   │   └── xSchema.py       # Pydantic schemas for validation
+│   │   └── xSchema.py       # Pydantic schemas for validation, used in and response bodies
 │   └── crud
 │       └── xCrud.py       # CRUD operations for the x resource
 ├── .env                     # Environment variables
@@ -47,6 +49,7 @@ my-fastapi-project
    DB_HOST=your_db_host
    DB_PORT=your_db_port
    DB_NAME=your_db_name
+   ROOT_URL=/ # root URL of the application after the domain, e.g. /api/
    CORS_ORIGIN=http://localhost:* # URL of the consumer application
    ```
    

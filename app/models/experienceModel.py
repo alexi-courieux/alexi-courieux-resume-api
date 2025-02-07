@@ -37,7 +37,7 @@ class ExperienceSkillModel(Base):
 
     id = Column("ID", Integer, primary_key=True)
     experienceId = Column("EXPERIENCE_ID", String, ForeignKey('EXPERIENCE.ID'))
-    skillId = Column("SKILL_ID", String)
+    skillId = Column("SKILL_ID", String, ForeignKey('SKILL.ID'))
 
     def __repr__(self):
         return f"<ExperienceSkill(id='{self.id}', experienceId='{self.experienceId}', skillId='{self.skillId}')>"

@@ -1,4 +1,4 @@
-from app.database import SessionLocal
+from app.core.database import SessionLocal
 
 # Dependency to get the database session
 def get_db():
