@@ -7,8 +7,8 @@ from app.core.logging import logger
 from time import time
 
 router = APIRouter()
-@router.get("/{experienceId}", response_model=list[SkillSchema], responses={404: {"description": "Experience not found"}})
-async def read_experience(experienceId: str, language: str = Query("EN"), db: Session = Depends(get_db)):
+@router.get("/{experienceId}", response_model=list[SkillSchema], responses={404: {"description": "No skills found for experience"}})
+async def list_skills_experience(experienceId: str, language: str = Query("EN"), db: Session = Depends(get_db)):
     start_time = time()
     logger.info(f"Reading skills for experience: {experienceId}")
     
@@ -23,7 +23,7 @@ async def read_experience(experienceId: str, language: str = Query("EN"), db: Se
     return skills
 
 @router.get("/", response_model=list[SkillSchema])
-async def list_experiences(language: str = Query("EN"), db: Session = Depends(get_db)):
+async def list_skills(language: str = Query("EN"), db: Session = Depends(get_db)):
     start_time = time()
     logger.info("Listing skills")
     
