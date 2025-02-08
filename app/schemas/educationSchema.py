@@ -9,6 +9,7 @@ class EducationSchema(BaseModel):
     degree: str
     startDate: date
     endDate: Optional[date] = None
+    imageUri: Optional[str] = None
 
     class Config:
         from_attributes = True

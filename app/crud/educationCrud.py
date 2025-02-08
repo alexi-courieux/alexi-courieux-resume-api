@@ -19,6 +19,7 @@ def get_educations(db: Session, language: str) -> list[EducationSchema]:
                 location=i18n.location,
                 degree=i18n.degree,
                 startDate=result.startDate,
-                endDate=result.endDate
+                endDate=result.endDate,
+                imageUri=i18n.imageUri
             ))
     return educations
