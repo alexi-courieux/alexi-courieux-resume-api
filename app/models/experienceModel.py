@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import Column, Date, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -8,8 +8,8 @@ class ExperienceModel(Base):
     __tablename__ = 'EXPERIENCE'
 
     id = Column("ID", String, primary_key=True)
-    startDate = Column("START_DATE", DateTime)
-    endDate = Column("END_DATE", DateTime)
+    startDate = Column("START_DATE", Date)
+    endDate = Column("END_DATE", Date)
 
     i18n = relationship("ExperienceI18nModel", back_populates="experience")
 

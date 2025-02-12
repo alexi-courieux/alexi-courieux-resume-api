@@ -36,8 +36,8 @@ class EducationSkillModel(Base):
     __tablename__ = 'EDUCATION_SKILL'
 
     id = Column("ID", Integer, primary_key=True)
-    educationId = Column("EDUCATION_ID", String, ForeignKey('EDUCATION.ID'))
-    skillId = Column("SKILL_ID", String, ForeignKey('SKILL.ID'))
+    educationId = Column("EDUCATION_ID", String, ForeignKey('EDUCATION.ID'), nullable=False)
+    skillId = Column("SKILL_ID", String, ForeignKey('SKILL.ID'), nullable=False)
 
     def __repr__(self):
         return f"<EducationSkill(id='{self.id}', educationId='{self.educationId}', skillId='{self.skillId}')>"
