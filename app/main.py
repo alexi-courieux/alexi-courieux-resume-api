@@ -1,14 +1,14 @@
 import os
 from fastapi import FastAPI, HTTPException
 from sqlalchemy import text
-from app.api.v1.endpoints.experienceEndpoint import router as experience_router
-from app.api.v1.endpoints.skillEndpoint import router as skill_router
-from app.api.v1.endpoints.educationEndpoint import router as education_router
-from app.core.exceptionHandler import general_exception_handler, http_exception_handler
-from app.core.database import engine
+from api.v1.endpoints.experienceEndpoint import router as experience_router
+from api.v1.endpoints.skillEndpoint import router as skill_router
+from api.v1.endpoints.educationEndpoint import router as education_router
+from core.exceptionHandler import general_exception_handler, http_exception_handler
+from core.database import engine
 from fastapi.responses import HTMLResponse
-from app.core.logging import log_filename
-from app.core.logging import logger
+from core.logging import log_filename
+from core.logging import logger
 
 print(f"log file : {log_filename}")
 
