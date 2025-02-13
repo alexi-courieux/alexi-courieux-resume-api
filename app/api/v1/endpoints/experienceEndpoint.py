@@ -1,10 +1,10 @@
 import logging
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from app.dependencies import get_db
-from app.schemas.experienceSchema import ExperienceSchema
-from app.crud.experienceCrud import get_experience, get_experiences
-from app.core.logging import logger
+from dependencies import get_db
+from schemas.experienceSchema import ExperienceSchema
+from crud.experienceCrud import get_experience, get_experiences
+from core.logging import logger
 
 router = APIRouter()
 @router.get("/{company}", response_model=ExperienceSchema, responses={404: {"description": "Experience not found"}})

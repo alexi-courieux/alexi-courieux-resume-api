@@ -1,7 +1,7 @@
 from sqlalchemy import text
 from sqlalchemy.orm import Session
-from app.models.educationModel import EducationModel, EducationI18nModel
-from app.schemas.educationSchema import EducationSchema
+from models.educationModel import EducationModel, EducationI18nModel
+from schemas.educationSchema import EducationSchema
 
 def get_educations(db: Session, language: str) -> list[EducationSchema]:
     results = db.query(EducationModel).\

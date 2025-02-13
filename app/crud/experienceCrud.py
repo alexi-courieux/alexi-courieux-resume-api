@@ -1,7 +1,7 @@
 from sqlalchemy import text
 from sqlalchemy.orm import Session
-from app.models.experienceModel import ExperienceI18nModel, ExperienceModel
-from app.schemas.experienceSchema import ExperienceSchema
+from models.experienceModel import ExperienceI18nModel, ExperienceModel
+from schemas.experienceSchema import ExperienceSchema
 
 def get_experience(db: Session, company: str, language: str) -> ExperienceSchema:
     result = db.query(ExperienceModel).\

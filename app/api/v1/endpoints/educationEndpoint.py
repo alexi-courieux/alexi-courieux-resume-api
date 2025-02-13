@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
-from app.core.logging import logger
-from app.crud.educationCrud import get_educations
-from app.dependencies import get_db
-from app.schemas.educationSchema import EducationSchema
+from core.logging import logger
+from crud.educationCrud import get_educations
+from dependencies import get_db
+from schemas.educationSchema import EducationSchema
 from sqlalchemy.orm import Session
 
 

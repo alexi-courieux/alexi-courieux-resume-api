@@ -1,7 +1,7 @@
 import traceback
 from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
-from app.core.logging import logger
+from core.logging import logger
 
 async def http_exception_handler(request: Request, exc: HTTPException):
     logger.error(f"HTTPException: {exc.status_code} : {exc.detail} - {request.url}")
