@@ -1,8 +1,13 @@
 import os
+import sys
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from a2wsgi import ASGIMiddleware
-from app.main import app as fastapi_app
+
+# Add the project directory to the sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from main import app as fastapi_app
 
 # Add CORS middleware
 fastapi_app.add_middleware(
@@ -22,12 +27,8 @@ def start_wsgi_app(env, start_response):
     return app(env, start_response)
 
 if __name__ == "__main__":
-    import sys
     from fastapi.middleware.wsgi import WSGIMiddleware
-
-    # Add the project directory to the sys.path
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
     # Run the application
     from waitress import serve
-    serve(start_wsgi_app, host="127.0.0.1", port=8000)
+    serve(start_wsgi_app, host="0.0.0.0", port=8000)
