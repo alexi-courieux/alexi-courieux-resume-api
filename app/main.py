@@ -115,7 +115,7 @@ async def health_check_complete():
         checks.append({"name": "Database connection", "status": "OK", "color": "green"})
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
-        checks.append({"name": "Database connection", "status": "KO", "color": "red", "error": str(e)})
+        checks.append({"name": "Database connection", "status": "KO", "color": "red", "error": "An internal error has occurred."})
 
     all_systems_operational = all(check["status"] == "OK" for check in checks)
     header_message = "ALL Systems Operational" if all_systems_operational else "Some Systems are Partially Operational"
