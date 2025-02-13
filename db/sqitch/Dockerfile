@@ -1,4 +1,4 @@
-FROM perl:latest
+FROM perl:5.8.9
 
 ARG DB_HOST
 ARG DB_PORT
@@ -14,7 +14,9 @@ ENV MYSQL_SUPER_PASSWORD_FILE=${MYSQL_SUPER_PASSWORD_FILE}
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y sqitch libdbd-mysql-perl
+    apt-get install -y sqitch libdbd-mysql-perl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
 WORKDIR /sqitch

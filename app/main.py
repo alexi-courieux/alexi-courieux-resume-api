@@ -96,7 +96,7 @@ def root():
 
 @app.get("/health", response_class=HTMLResponse, include_in_schema=False)
 def health_check():
-    body_content = f"""
+    body_content = """
     <h1 class='green'>Application is Running</h1>
     <a href="/health-complete">Complete Health Check</a>
     """

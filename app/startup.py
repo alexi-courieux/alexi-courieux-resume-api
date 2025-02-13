@@ -19,8 +19,8 @@ fastapi_app.add_middleware(
 )
 
 def create_wsgi_app():
-    wsgiApi = ASGIMiddleware(fastapi_app)
-    return wsgiApi
+    wsgi_api = ASGIMiddleware(fastapi_app)
+    return wsgi_api
 
 def start_wsgi_app(env, start_response):
     app = create_wsgi_app()
