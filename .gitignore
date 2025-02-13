@@ -40,9 +40,8 @@ venv.bak/
 *.manifest
 *.spec
 
-# Environment variables & secrets
-.env*
-secrets/
+# Environment secrets
+secrets/*
 
 # Logs
 logs/
