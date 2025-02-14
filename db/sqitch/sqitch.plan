@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=alexicourieux-resume-db
+%uri=alexicourieux.com
+
+000-init 2025-02-12T17:55:32Z Alexi Courieux <contact@alexicourieux.com> # Initial table creation
+001-init-data 2025-02-12T18:15:42Z Alexi Courieux <contact@alexicourieux.com> # Initial data load

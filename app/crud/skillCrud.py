@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
-from app.models.skillModel import SkillModel, SkillI18nModel, SkillSkillCategoryModel, SkillCategoryI18nModel
-from app.models.experienceModel import ExperienceSkillModel
-from app.schemas.skillSchema import SkillSchema
+from models.skillModel import SkillModel, SkillI18nModel, SkillSkillCategoryModel, SkillCategoryI18nModel
+from models.experienceModel import ExperienceSkillModel
+from schemas.skillSchema import SkillSchema
 
 def get_experience_skills(db: Session, experienceCompany: str, language: str) -> list[SkillSchema]:
     results = db.query(SkillModel.id, SkillI18nModel.name).\

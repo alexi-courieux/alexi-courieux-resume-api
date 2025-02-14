@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from app.dependencies import get_db
-from app.crud.skillCrud import get_skills, get_experience_skills
-from app.schemas.skillSchema import SkillSchema
-from app.core.logging import logger
+from dependencies import get_db
+from crud.skillCrud import get_skills, get_experience_skills
+from schemas.skillSchema import SkillSchema
+from core.logging import logger
 from time import time
 
 router = APIRouter()
