@@ -1,5 +1,6 @@
 import os
-from fastapi import FastAPI, HTTPException
+import time
+from fastapi import FastAPI, HTTPException, BackgroundTasks
 from sqlalchemy import text
 from api.v1.endpoints.experienceEndpoint import router as experience_router
 from api.v1.endpoints.skillEndpoint import router as skill_router
@@ -7,12 +8,36 @@ from api.v1.endpoints.educationEndpoint import router as education_router
 from core.exceptionHandler import general_exception_handler, http_exception_handler
 from core.database import engine
 from fastapi.responses import HTMLResponse
-from core.logging import log_filename
-from core.logging import logger
+from core.logging import log_filename, logger
+from contextlib import asynccontextmanager
+import threading
 
 print(f"log file : {log_filename}")
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    logger.info("The application is starting up.")
+    
+    # Start the background task for database ping
+    def ping_database():
+        while True:
+            try:
+                with engine.connect() as connection:
+                    connection.execute(text("SELECT 1"))
+                logger.info("Database ping successful.")
+            except Exception as e:
+                logger.error(f"Database ping failed: {e}")
+            time.sleep(300)  # Sleep for 5 minutes
+
+    ping_thread = threading.Thread(target=ping_database, daemon=True)
+    ping_thread.start()
+    logger.info("Background task for database ping started.")
+    
+    yield
+    
+    logger.info("The application is shutting down.")
+
+app = FastAPI(lifespan=lifespan)
 
 app.include_router(experience_router, prefix="/v1/experience", tags=["experience"])
 app.include_router(skill_router, prefix="/v1/skill", tags=["skill"])
