@@ -32,6 +32,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./app/
-          server-dir: resume-api/
+          server-dir: /
           state-name: api_content
           dangerous-clean-slate: ${{ github.event.inputs.clean_ftp }}
