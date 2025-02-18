@@ -4,3 +4,5 @@
 
 000-init 2025-02-12T17:55:32Z Alexi Courieux <contact@alexicourieux.com> # Initial table creation
 001-init-data 2025-02-12T18:15:42Z Alexi Courieux <contact@alexicourieux.com> # Initial data load
+002-experience-logo-uri 2025-02-17T22:29:18Z Alexi Courieux <contact@alexicourieux.com> # Add experience logo URI
+003-education-logo-dark 2025-02-17T23:55:44Z Alexi Courieux <contact@alexicourieux.com> # Add education logo URI for dark mode
