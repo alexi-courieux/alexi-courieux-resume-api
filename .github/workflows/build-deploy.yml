@@ -7,10 +7,7 @@ on:
         description: 'Deployment Environment'
         required: true
         default: 'production'
-        type: choice
-        options:
-          - 'production'
-          - 'staging'
+        type: environment
       clean_ftp:
         description: 'Clean FTP'
         required: false

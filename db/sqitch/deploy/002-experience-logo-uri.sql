@@ -13,7 +13,7 @@ SET `IMAGE_URI` = CASE
     WHEN `EXPERIENCE_ID` = 'csm' AND `LANGUAGE` = 'en' THEN 'images/experience-csm.svg'
     WHEN `EXPERIENCE_ID` = 'exco' AND `LANGUAGE` = 'en' THEN 'images/experience-exco.png'
     WHEN `EXPERIENCE_ID` = 'flo' AND `LANGUAGE` = 'en' THEN 'images/experience-flo.svg'
-    WHEN `EXPERIENCE_ID` = 'koedia' AND `LANGUAGE` = 'en' THEN 'images/experience-koedia.png'
+    WHEN `EXPERIENCE_ID` = 'koedia' AND `LANGUAGE` = 'en' THEN 'images/experience-koedia.svg'
     WHEN `EXPERIENCE_ID` = 'nbc' AND `LANGUAGE` = 'en' THEN 'images/en/experience-nbc.svg'
     WHEN `EXPERIENCE_ID` = 'nbc' AND `LANGUAGE` = 'fr' THEN 'images/fr/experience-nbc.svg'
     ELSE NULL
