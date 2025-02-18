@@ -1,4 +1,4 @@
-FROM perl:5.8.9
+FROM perl:5.41.8-slim
 
 ARG DB_HOST
 ARG DB_PORT
@@ -14,7 +14,7 @@ ENV MYSQL_SUPER_PASSWORD_FILE=${MYSQL_SUPER_PASSWORD_FILE}
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y sqitch libdbd-mysql-perl && \
+    apt-get install sqitch libdbd-sqlite3-perl sqlite3 dos2unix -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -28,6 +28,7 @@ COPY revert /sqitch/revert/
 COPY verify /sqitch/verify/
 
 COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN dos2unix /usr/local/bin/entrypoint.sh && chmod +x /usr/local/bin/entrypoint.sh && \
+    chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT [ "entrypoint.sh" ]
