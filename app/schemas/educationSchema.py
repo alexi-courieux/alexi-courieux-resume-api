@@ -10,6 +10,8 @@ class EducationSchema(BaseModel):
     startDate: date
     endDate: Optional[date] = None
     imageUri: Optional[str] = None
+    imageAlt: str
+    imageUriDark: Optional[str] = None
 
     class Config:
         from_attributes = True

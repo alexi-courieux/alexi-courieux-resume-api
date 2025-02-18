@@ -19,7 +19,10 @@ def get_experience(db: Session, company: str, language: str) -> ExperienceSchema
                 startDate=result.startDate,
                 endDate=result.endDate,
                 shortDescription=i18n.short_description,
-                description=i18n.description
+                description=i18n.description,
+                imageUri=i18n.imageUri,
+                imageAlt=i18n.imageAlt,
+                imageUriDark=i18n.imageUriDark
             )
     return None
 
@@ -40,6 +43,9 @@ def get_experiences(db: Session, language: str) -> list[ExperienceSchema]:
                 startDate=result.startDate,
                 endDate=result.endDate,
                 shortDescription=i18n.short_description,
-                description=i18n.description
+                description=i18n.description,
+                imageUri=i18n.imageUri,
+                imageAlt=i18n.imageAlt,
+                imageUriDark=i18n.imageUriDark
             ))
     return experiences

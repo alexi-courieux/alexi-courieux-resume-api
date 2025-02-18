@@ -10,6 +10,9 @@ class ExperienceSchema(BaseModel):
     endDate: Optional[date] = None
     shortDescription: str
     description: str
+    imageUri: str
+    imageAlt: str
+    imageUriDark: Optional[str] = None
 
     class Config:
         from_attributes = True
