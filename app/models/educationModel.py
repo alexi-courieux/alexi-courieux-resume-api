@@ -26,6 +26,8 @@ class EducationI18nModel(Base):
     degree = Column("DEGREE", String, nullable=False)
     language = Column("LANGUAGE", String, nullable=False, default="EN")
     imageUri = Column("IMAGE_URI", String, nullable=True)
+    imageAlt = Column("IMAGE_ALT", String, nullable=False)
+    imageUriDark = Column("IMAGE_URI_DARK", String, nullable=True)
 
     education = relationship("EducationModel", back_populates="i18n")
 

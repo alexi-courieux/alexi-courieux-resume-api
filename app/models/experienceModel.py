@@ -26,6 +26,9 @@ class ExperienceI18nModel(Base):
     description = Column("DESCRIPTION", String)
     companyName = Column("COMPANY_NAME", String)
     language = Column("LANGUAGE", String)
+    imageUri = Column("IMAGE_URI", String, nullable=False)
+    imageAlt = Column("IMAGE_ALT", String, nullable=False)
+    imageUriDark = Column("IMAGE_URI_DARK", String, nullable=True)
 
     experience = relationship("ExperienceModel", back_populates="i18n")
 
