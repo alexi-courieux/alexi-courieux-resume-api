@@ -82,7 +82,7 @@ alexi-courieux-resume-api
 
 4. 2. Run the application (with Docker):
    ```
-   docker-compose up --profile backend --build
+   docker compose --profile backend up --build
    ```
 
 ## Usage
