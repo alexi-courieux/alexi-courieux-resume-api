@@ -21,7 +21,10 @@ Travailler de manière indépendante me permet de fournir des solutions sur mesu
 
 Mon travail freelance se concentre sur l''aide aux entreprises pour construire des applications robustes et évolutives et optimiser leurs processus de développement.', 'Indépendant', 'FR', 'images/experience-freelance.svg', 'images/experience-freelance-dark.svg', 'Logo Freelance');
 
-# Add skills to freelance experience based on current skillset
+# Add skills to freelance experience
+# All skills used here were created in previous migrations (001-init-data and 004-experience-update)
+# We disable foreign key checks temporarily because the experience 'freelance' is being inserted in this same transaction
+# This is a standard pattern used in previous migrations (see 004-experience-update.sql line 52)
 SET FOREIGN_KEY_CHECKS = 0;
 INSERT INTO resume.EXPERIENCE_SKILL (EXPERIENCE_ID, SKILL_ID) VALUES 
     ('freelance', 'java'),
