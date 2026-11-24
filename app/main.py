@@ -5,6 +5,7 @@ from sqlalchemy import text
 from api.v1.endpoints.experienceEndpoint import router as experience_router
 from api.v1.endpoints.skillEndpoint import router as skill_router
 from api.v1.endpoints.educationEndpoint import router as education_router
+from api.v1.endpoints.portfolioEndpoint import router as portfolio_router
 from core.exceptionHandler import general_exception_handler, http_exception_handler
 from core.database import engine
 from fastapi.responses import HTMLResponse
@@ -42,6 +43,7 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(experience_router, prefix="/v1/experience", tags=["experience"])
 app.include_router(skill_router, prefix="/v1/skill", tags=["skill"])
 app.include_router(education_router, prefix="/v1/education", tags=["education"])
+app.include_router(portfolio_router, prefix="/v1/portfolio", tags=["portfolio"])
 
 def render_html(title: str, body_content: str) -> str:
     return f"""
