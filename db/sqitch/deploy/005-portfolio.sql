@@ -39,4 +39,42 @@ CREATE TABLE `PROJECT_SKILL` (
   CONSTRAINT `PROJECT_SKILL_SKILL_fk` FOREIGN KEY (`SKILL_ID`) REFERENCES `SKILL` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `PROJECT` (`ID`, `LINK_URL`, `REPOSITORY_URL`, `PROJECT_DATE`, `DISPLAY_ORDER`, `FEATURED`) VALUES
+('skymap', 'https://skymap.alexicourieux.com', 'https://github.com/alexi-courieux/sky-live-traffic', '2026-11-24', 1, 0);
+
+INSERT INTO `PROJECT_I18N` (`PROJECT_ID`, `LANGUAGE`, `TITLE`, `SHORT_DESCRIPTION`, `DESCRIPTION`, `LINK_LABEL`, `THUMBNAIL_URI`, `THUMBNAIL_ALT`) VALUES
+('skymap', 'EN', 'Sky Map', 'A live map of the sky with real-time flight tracking.', 'Sky Map is a web application that provides a live map of the sky, allowing users to track flights in real-time. It offers detailed information about each flight, including its current position, altitude, speed, and more.', 'Visit Sky Map', '/images/portfolio/skypmap-thumbnail.png', 'Sky Map Thumbnail'),
+('skymap', 'FR', 'Sky Map', 'Une carte en direct du ciel avec suivi des vols en temps réel.', 'Carte du Ciel est une application web qui fournit une carte en direct du ciel, permettant aux utilisateurs de suivre les vols en temps réel. Elle offre des informations détaillées sur chaque vol, y compris sa position actuelle, son altitude, sa vitesse et plus encore.', 'Visiter Sky Map', '/images/portfolio/skymap-thumbnail.png', 'Vignette de Sky Map');
+
+-- Skills used by the projects but not yet in the catalog ('typescript' and 'react' already exist, with a category)
+INSERT INTO `SKILL` (`ID`) VALUES
+('vite'),
+('mui'),
+('leaflet'),
+('pixijs');
+
+INSERT INTO `SKILL_I18N` (`SKILL_ID`, `LANGUAGE`, `NAME`) VALUES
+('vite', 'EN', 'Vite'),
+('vite', 'FR', 'Vite'),
+('mui', 'EN', 'MUI'),
+('mui', 'FR', 'MUI'),
+('leaflet', 'EN', 'Leaflet'),
+('leaflet', 'FR', 'Leaflet'),
+('pixijs', 'EN', 'PixiJS'),
+('pixijs', 'FR', 'PixiJS');
+
+INSERT INTO `SKILL_SKILL_CATEGORY` (`SKILL_ID`, `SKILL_CATEGORY_ID`) VALUES
+('vite', 'frontend'),
+('mui', 'frontend'),
+('leaflet', 'frontend'),
+('pixijs', 'frontend');
+
+INSERT INTO `PROJECT_SKILL` (`PROJECT_ID`, `SKILL_ID`) VALUES
+('skymap', 'typescript'),
+('skymap', 'react'),
+('skymap', 'vite'),
+('skymap', 'mui'),
+('skymap', 'leaflet'),
+('skymap', 'pixijs');
+
 COMMIT;
