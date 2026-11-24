@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from models.skillModel import SkillModel, SkillI18nModel, SkillSkillCategoryModel, SkillCategoryI18nModel
 from models.experienceModel import ExperienceSkillModel
+from models.projectModel import ProjectSkillModel
 from schemas.skillSchema import SkillSchema
 
 def get_experience_skills(db: Session, experienceCompany: str, language: str) -> list[SkillSchema]:
@@ -21,6 +22,26 @@ def get_experience_skills(db: Session, experienceCompany: str, language: str) ->
             id=result.id,
             name=result.name,
             categories=category_names
+        ))
+    return skills
+
+def get_project_skills(db: Session, projectId: str, language: str) -> list[SkillSchema]:
+    results = db.query(SkillModel.id, SkillI18nModel.name).\
+        join(SkillI18nModel, SkillModel.id == SkillI18nModel.skillId).\
+        join(ProjectSkillModel, SkillModel.id == ProjectSkillModel.skillId).\
+        filter(SkillI18nModel.language == language, ProjectSkillModel.projectId == projectId).\
+        all()
+
+    skills = []
+    for result in results:
+        categories = db.query(SkillCategoryI18nModel.name).\
+            join(SkillSkillCategoryModel, SkillCategoryI18nModel.skillCategoryId == SkillSkillCategoryModel.skillCategoryId).\
+            filter(SkillSkillCategoryModel.skillId == result.id, SkillCategoryI18nModel.language == language).\
+            all()
+        skills.append(SkillSchema(
+            id=result.id,
+            name=result.name,
+            categories=[category.name for category in categories]
         ))
     return skills
 

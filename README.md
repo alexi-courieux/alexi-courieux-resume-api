@@ -1,6 +1,6 @@
 # My FastAPI Project
 
-This is a FastAPI project used to serve my resume data. It provides endpoints to access my experience, education, and skills data.
+This is a FastAPI project used to serve my resume data. It provides endpoints to access my experience, education, skills and portfolio (projects) data.
 
 ## Project Structure
 
